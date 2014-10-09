@@ -30,5 +30,35 @@
 		<security-role-ref>
 			<role-name>user</role-name>
 		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>PrimeChart</portlet-name>
+		<display-name>PrimeChart</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/xhtml/ltbao/PrimeChart.xhtml</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>PrimeChart</title>
+			<short-title>PrimeChart</short-title>
+			<keywords>PrimeChart</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
 	</portlet>	
 </portlet-app>

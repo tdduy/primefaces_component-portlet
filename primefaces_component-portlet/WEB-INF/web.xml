@@ -128,6 +128,20 @@
 		<servlet-name>TestPrimeFace Servlet</servlet-name>
 		<url-pattern>/TestPrimeFace/*</url-pattern>
 	</servlet-mapping>
+	<!-- LTBAO -->
+	<servlet>
+		<servlet-name>PrimeChart Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>javax.portlet.faces.GenericFacesPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrimeChart Servlet</servlet-name>
+		<url-pattern>/PrimeChart/*</url-pattern>
+	</servlet-mapping>
 	<jsp-config>
 		<taglib>
 			<taglib-uri>http://liferay.com/tld/aui</taglib-uri>

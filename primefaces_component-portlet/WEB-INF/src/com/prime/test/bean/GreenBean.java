@@ -1,3 +1,4 @@
+//Lý Thái Bảo
 package com.prime.test.bean;
 
 import java.io.Serializable;

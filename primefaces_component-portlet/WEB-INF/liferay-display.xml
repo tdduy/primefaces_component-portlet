@@ -3,6 +3,7 @@
 
 <display>
 	<category name="Primeface component">
-		<portlet id="TestPrimeFace"></portlet>		
+		<portlet id="TestPrimeFace"></portlet>
+		<portlet id="PrimeChart"></portlet>		
 	</category>
 </display>
