@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+
+	<property name="LOG_HOME" value="C:/Java/log" />	
+	
+	<appender name="DEV_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level [%class{0}:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="DEV_SQL" class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_HOME}/sql.log</file>
+		<append>false</append>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %X{userid} | %msg%n</pattern>
+		</encoder>
+	</appender>
+  	
+  	
+  	<appender name="PROC_FILE_ERR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- Luu log cua moi ngay 1 file -->
+			<fileNamePattern>${LOG_HOME}/TestPrimeFace_error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- khi file vuoi qua 10MB thi tao file moi -->
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+
+			<!-- luu tru lich su trong 30 ngay -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%class{0}:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="PROC_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_HOME}/TestPrimeFace.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%class{0}:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="PROC_SQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>${LOG_HOME}/sql.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+		<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>----------%n{}time: %d{HH:mm:ss.SSS}%n{}userid: %X{userid}%n%msg</pattern>
+		</encoder>
+	</appender>
+  
+  
+	<logger name="org.hibernate.type" level="INFO" />
+	
+	
+	<!-- Những thiết lập log dành cho việc phát triển -->
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="DEV_STDOUT" />
+	</logger>
+	
+	<logger name="jdbc.audit" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="jdbc.connection" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="log4jdbc.debug" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="DEV_STDOUT" />
+	</root>
+	
+	<!-- Những thiết lập log khi triển khai cho khách hàng -->
+	<!-- 
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="PROC_SQL" />
+	</logger>	
+	
+	<logger name="jdbc.audit" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="jdbc.connection" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<logger name="log4jdbc.debug" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="DEV_SQL" />
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="DEV_STDOUT" />
+		<appender-ref ref="PROC_FILE" />
+		<appender-ref ref="PROC_FILE_ERR" />
+	</root>
+ 	-->
+
+</configuration>

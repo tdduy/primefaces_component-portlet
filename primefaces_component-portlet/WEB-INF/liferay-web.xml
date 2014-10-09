@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<filter>
+		<filter-name>Compound Session Id Filter</filter-name>
+		<filter-class>com.liferay.portal.kernel.servlet.PortalClassLoaderFilter</filter-class>
+		<init-param>
+			<param-name>filter-class</param-name>
+			<param-value>com.liferay.portal.servlet.filters.compoundsessionid.CompoundSessionIdFilter</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>Thread Local Filter</filter-name>
+		<filter-class>com.liferay.portal.kernel.servlet.PortalClassLoaderFilter</filter-class>
+		<init-param>
+			<param-name>filter-class</param-name>
+			<param-value>com.liferay.portal.servlet.filters.threadlocal.ThreadLocalFilter</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>Ignore Filter - FTL</filter-name>
+		<filter-class>com.liferay.portal.kernel.servlet.PortalClassLoaderFilter</filter-class>
+		<init-param>
+			<param-name>filter-class</param-name>
+			<param-value>com.liferay.portal.servlet.filters.ignore.IgnoreFilter</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>Ignore Filter - JSPF</filter-name>
+		<filter-class>com.liferay.portal.kernel.servlet.PortalClassLoaderFilter</filter-class>
+		<init-param>
+			<param-name>filter-class</param-name>
+			<param-value>com.liferay.portal.servlet.filters.ignore.IgnoreFilter</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>Ignore Filter - VM</filter-name>
+		<filter-class>com.liferay.portal.kernel.servlet.PortalClassLoaderFilter</filter-class>
+		<init-param>
+			<param-name>filter-class</param-name>
+			<param-value>com.liferay.portal.servlet.filters.ignore.IgnoreFilter</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>Servlet Context Include Filter</filter-name>
+		<filter-class>com.liferay.portal.kernel.servlet.PortalClassLoaderFilter</filter-class>
+		<init-param>
+			<param-name>filter-class</param-name>
+			<param-value>com.liferay.portal.servlet.filters.servletcontextinclude.ServletContextIncludeFilter</param-value>
+		</init-param>
+		<init-param>
+			<param-name>url-regex-ignore-pattern</param-name>
+			<param-value>.*/WEB-INF/jsp/_servlet_context_include.jsp</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Thread Local Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Compound Session Id Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Ignore Filter - FTL</filter-name>
+		<url-pattern>*.ftl</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Ignore Filter - JSPF</filter-name>
+		<url-pattern>*.jspf</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Ignore Filter - VM</filter-name>
+		<url-pattern>*.vm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Servlet Context Include Filter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+</web-app>

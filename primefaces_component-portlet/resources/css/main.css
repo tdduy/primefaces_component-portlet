@@ -1,0 +1,42 @@
+.portlet-msg-error {
+	font-style: italic;
+	font-weight: bold;
+	margin: 1px 0px 0px 0px;
+	padding: 1px 5px 1px 24px;
+}
+
+.portlet-msg-info {
+	font-style: italic;
+	margin: 1px 0px 0px 0px;
+	padding: 1px 5px 1px 24px;
+}
+
+.commandBottonPanel{
+	vertical-align: middle;
+	text-align: right;
+	margin-bottom: 5px;
+}
+
+/*BEGIN: Update form*/
+.cssLeft{
+	text-align: right;
+	font-weight: bold;
+	width: 25%;
+}
+.cssRight{
+	padding-left:5px;
+	text-align: left;
+	width: 75%;
+}
+.actionBottonPanel{
+	padding-top: 10px;
+}
+
+.actionBottonPanel input{
+	margin-right: 5px;
+}
+.inRequire{
+	border-left: 3px solid red !important;
+}
+
+/*END: Update form*/
