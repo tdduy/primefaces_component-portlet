@@ -9,7 +9,8 @@
 	xmlns:p="http://primefaces.org/ui">	
 	<h:head />
 	<h:body>
-		<h:outputText style="color:red; font-size:20px" value="#{GreenBean.helloWord}" />
-		<br/>
+		<p:panel>
+			<p:chart type="pie" model="#{RedBean.pieModel1}" style="width:400px;height:300px" />
+		</p:panel>
 	</h:body>
 </f:view>
