@@ -20,6 +20,11 @@ public class PrimeChartBean {
         pieModel1.setTitle("Simple Pie");
         pieModel1.setLegendPosition("w");
 	}
+	
+	public void actionWrappedException(){
+		throw new NullPointerException();
+	}
+	
 	public PieChartModel getPieModel1() {
 		return pieModel1;
 	}
