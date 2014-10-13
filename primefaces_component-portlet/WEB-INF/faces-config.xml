@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 
 <faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
-	<factory/>	
+	<factory>
+		 <exception-handler-factory>
+	    	org.primefaces.extensions.component.ajaxerrorhandler.AjaxExceptionHandlerFactory
+	    </exception-handler-factory>
+	</factory>	
 	<!-- Bỏ qua lỗi khi thay đỗi số dòng dữ liệu trên datatable -->	
+	
 </faces-config>

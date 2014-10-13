@@ -4,6 +4,7 @@
 <display>
 	<category name="Primeface component">
 		<portlet id="TestPrimeFace"></portlet>
-		<portlet id="PrimeChart"></portlet>		
+		<portlet id="PrimeChart"></portlet>
+		<portlet id="DataScrollerBean"></portlet>			
 	</category>
 </display>
