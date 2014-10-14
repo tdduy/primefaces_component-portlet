@@ -6,6 +6,7 @@
 		<portlet id="TestPrimeFace"></portlet>
 		<portlet id="PrimeChart"></portlet>
 		<portlet id="DataScrollerBean"></portlet>	
-		<portlet id="PrimeUpload"></portlet>			
+		<portlet id="PrimeUpload"></portlet>
+		<portlet id="PrimeLazyLoading"></portlet>			
 	</category>
 </display>

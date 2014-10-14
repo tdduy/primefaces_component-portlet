@@ -169,6 +169,20 @@
 	<servlet-mapping>
 		<servlet-name>PrimeUpload Servlet</servlet-name>
 		<url-pattern>/PrimeUpload/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PrimeLazyLoading Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>javax.portlet.faces.GenericFacesPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrimeLazyLoading Servlet</servlet-name>
+		<url-pattern>/PrimeLazyLoading/*</url-pattern>
 	</servlet-mapping>	
 		
 	<jsp-config>

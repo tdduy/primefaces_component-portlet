@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:pe="http://primefaces.org/ui/extensions" 
+	xmlns:p="http://primefaces.org/ui">	
+	<h:head />
+	<h:body>		
+		<h:form id="frm">
+			<ui:param name="bean" value="#{PrimeLazyLoading}"></ui:param>
+			<p:panel>
+				This number will change after 5 sec:
+				<br/>
+				<h:outputText style="color: green;
+									 font-size: 100px;
+									 font-weight: bold;" 
+									 value="#{(bean).mode}" id="txtCount"></h:outputText>
+				<p:remoteCommand rendered="#{(bean).mode!=2}" autoRun="true" update="frm" action="#{(bean).initBean1}"></p:remoteCommand>
+			</p:panel>			
+			<p:panel id="pnlControl" rendered="#{(bean).mode==1 or (bean).mode==2}">
+				<table>
+					<tr>
+						<td>Your name</td>
+						<td>
+							<p:inputText></p:inputText>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Age
+						</td>
+						<td>
+							<p:inputText></p:inputText>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Hobbies
+						</td>
+						<td>
+							<p:inputTextarea></p:inputTextarea>
+						</td>
+					</tr>
+				</table>
+				And after 5 sec ....
+			</p:panel>
+			<p:panel id="pnlControl2" rendered="#{(bean).mode==2}">
+				<h:outputText style="font-weight:100px; color:red" value="Hello! this's remoteCommand"></h:outputText>
+			</p:panel>
+		</h:form>
+	</h:body>
+</f:view>
