@@ -9,15 +9,38 @@
 	xmlns:p="http://primefaces.org/ui">	
 	<h:head />
 	<h:body>
-		<h:form>
+		<h:form enctype="multipart/form-data">
+			<ui:param name="bean" value="#{PrimeUploadBean}"></ui:param>
 			<p:panel>
-				<p:fileUpload auto="true" mode="advanced" update="messages" >
+				<!-- allowTypes="/(\.|\/)(gif|exe|png)$/" -->
+				<p:fileUpload
+					multiple="true"
+					dragDropSupport="true"					  					
+					fileUploadListener="#{(bean).actionUpload}" 					
+					auto="true" mode="advanced" update="messages tableUploadFile" >					
 				</p:fileUpload>
-				<p:growl id="messages" showDetail="true" />
+				<h:message for="messages" id="messages" infoClass="display:none"></h:message>
 			</p:panel>
 			<p:panel>
-				<p:dataTable>
-					
+				<p:dataTable id="tableUploadFile" rowIndexVar="rowIndex" value="#{(bean).listFile}" var="item">
+					<p:column style="width:10%; text-align:center" headerText="Seq">
+						#{rowIndex + 1}
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<div style="text-align: center;">
+								Filename
+							</div>
+						</f:facet>
+						#{item.fileName}						
+					</p:column>
+					<p:column headerText="Delete" style="text-align:center; width:10%">
+						<h:commandButton 							
+							image="#{resource['images:icon_134.png']}">
+							<p:ajax onstart="return confirm('U wanna delete this file ?')" process="@this" listener="#{(bean).actionDeleteFile}" update="tableUploadFile"></p:ajax>
+							<f:attribute name="obj" value="#{item}"></f:attribute>
+						</h:commandButton>
+					</p:column>
 				</p:dataTable>
 			</p:panel>
 		</h:form>
